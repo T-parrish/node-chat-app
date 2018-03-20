@@ -3,7 +3,7 @@ const express = require('express')
 
 const publicPath = path.join(__dirname, '../public');
 
-var port = process.env.port || 3000
+var port = process.env.PORT || 3000
 
 console.log(__dirname + '../publc');
 console.log(publicPath);
