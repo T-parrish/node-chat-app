@@ -22,15 +22,14 @@ var io = socketIO(server);
 io.on('connection', (socket) => {
 	console.log('New user connected');
 
-	// creates a new event
-	socket.emit('newMessage', {
-		from: 'Jimmy',
-		text: 'hows it going',
-		createdAt: 1245356
-	});
-
 	socket.on('createMessage', (message) => {
 		console.log('createMessage', message);
+		// io.emit emits something to all open connections
+		io.emit('newMessage', {
+			from: message.from,
+			text: message.text,
+			createdAt: new Date().getTime()
+		})
 	});
 
 
