@@ -20,7 +20,20 @@ var io = socketIO(server);
 
 // registers event listener -> this one is for a new connection
 io.on('connection', (socket) => {
-	console.log('New user connected')
+	console.log('New user connected');
+
+	// creates a new event
+	socket.emit('newMessage', {
+		from: 'Jimmy',
+		text: 'hows it going',
+		createdAt: 1245356
+	});
+
+	socket.on('createMessage', (message) => {
+		console.log('createMessage', message);
+	});
+
+
 	socket.on('disconnect', () => {
     console.log('User disconnected');
   });
