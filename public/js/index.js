@@ -33,4 +33,6 @@ jQuery('#message-form').on('submit', function (e) {
 	}, function(data) {
 		console.log('message received', data)
 	});
+
+	$('input[name=message]').val("")
 });
