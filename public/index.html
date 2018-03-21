@@ -1,4 +1,4 @@
-<!DOCTYPTE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -9,8 +9,17 @@
 
 <body>
 	<p> Welcome to the Thunderdome </p>
+	
+	<ol id="messages">
+	</ol>
+
+	<form id='message-form'>
+		<input id='testing' name="message" type="text" placeholder="Add message here" />
+		<button> Send </button>
+	</form>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/libs/jquery.min.js"></script>
 	<script src="/js/index.js"></script>
 </body>
 

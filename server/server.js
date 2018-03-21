@@ -3,6 +3,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
 
+const {generateMessage} = require('./utils/message')
 const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000
 
@@ -22,38 +23,26 @@ var io = socketIO(server);
 io.on('connection', (socket) => {
 	console.log('New user connected');
 
-	socket.emit('newMessage', {
-		from: 'Admin',
-		text: 'Welcome to the thunderdome',
-		createdAt: new Date().getTime()
-	});
+	socket.emit('newMessage', generateMessage('Admin', 'Welcome to the Thunderdome'));
 
-	socket.broadcast.emit('newMessage', {
-		from: 'Admin',
-		text: 'New user has entered',
-		createdAt: new Date().getTime()
-	});
+	socket.broadcast.emit('newMessage', generateMessage('Admin', 'A challenger appears'));
 
-	socket.on('createMessage', (message) => {
+	socket.on('createMessage', (message, callback) => {
 		console.log('createMessage', message);
-		// // io.emit emits something to all open connections
-		// io.emit('newMessage', {
+		// io.emit emits something to all open connections
+		io.emit('newMessage', generateMessage(message.from, message.text));
+		callback('this is from the server');
+		// // sends to everbody except the current socket (themself)
+		// socket.broadcast.emit('newMessage', {
 		// 	from: message.from,
 		// 	text: message.text,
-		// 	createdAt: new Date().getTime()
+		// 	createdAt : new Date().getTime()
 		// });
-
-		// sends to everbody except the current socket (themselves)
-		socket.broadcast.emit('newMessage', {
-			from: message.from,
-			text: message.text,
-			createdAt : new Date().getTime()
-		});
 	});
 
 
 	socket.on('disconnect', () => {
-    console.log('User disconnected');
+    	console.log('User disconnected');
   });
 });
 
