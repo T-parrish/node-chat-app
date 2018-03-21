@@ -7,7 +7,7 @@ describe('generate a new message', () => {
 		var message = generateMessage({from:'jimmy',text:'so tired'})
 		expect(message.from === 'jimmy')
 		expect(message.text === 'so tired')
-		expect(typeof message.createdAt).toBe('number')
+		expect(typeof message.createdAt).toBeTruthy()
 	});
 });
 
