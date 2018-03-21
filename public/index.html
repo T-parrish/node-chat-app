@@ -4,21 +4,30 @@
 
 <head>
 	<meta charset="utf-8">
+	<link rel='stylesheet' href='/css/styles.css'
 </head>
 
 
-<body>
-	<p> Welcome to the Thunderdome </p>
+<body class='chat'>
 
-	<ol id="messages">
-	</ol>
+	<div class = 'chat__sidebar'>
+		<h3>People</h3>
+		<div id="users"></div>
+	</div>
+	<div class='chat__main'>
+		<ol id="messages" class='chat__messages'>
+		</ol>
+		
+		<div class='chat__footer'>
+			<form id='message-form'>
+				<input id='testing' name="message" type="text" placeholder="Add message here" autofocus autocomplete='off'/>
+				<button> Send </button>
+			</form>
 
-	<form id='message-form'>
-		<input id='testing' name="message" type="text" placeholder="Add message here" />
-		<button> Send </button>
-	</form>
+			<button id="send-location">Send Location</button>
+		</div>
 
-	<button id="send-location">Send Location</button>
+	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/libs/jquery.min.js"></script>

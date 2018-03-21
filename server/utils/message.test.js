@@ -22,5 +22,5 @@ describe('generate location message', () => {
 		expect(message.from === 'Admin')
 		expect(message.url === 'https://www.google.com/maps?q=35.603549199999996,139.7074624')
 		expect(message.createdAt).toBeTruthy()
-	})
-})
+	});
+});
