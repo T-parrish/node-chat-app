@@ -1,2 +1,0 @@
-const expect = require('expect');
-
