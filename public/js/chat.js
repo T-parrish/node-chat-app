@@ -94,7 +94,6 @@ $('#message-form').on('submit', function (e) {
 	e.preventDefault();
 
 	socket.emit('createMessage', {
-		from: 'User',
 		// grabs data value from input with name = message
 		text: $('input[name=message]').val()
 	}, function(data) {
