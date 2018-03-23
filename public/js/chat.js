@@ -57,20 +57,8 @@ socket.on('newMessage', function (message) {
 
 	$('#messages').append(html);
 	scrollToBottom();
-	
-	// var formattedTime = moment(message.createdAt).format('h:mm a')
-	// var li = $('<li></li>');
-	// li.text(`${message.from} ${formattedTime}: ${message.text}`)
-
-	// $('#messages').append(li);
 });
 
-// socket.emit('createMessage', {
-// 	from: 'Jimmy',
-// 	text: 'Hello!'
-// }, function (data) {
-// 	console.log('from server: ', data);
-// });
 
 socket.on('newLocationMessage', function(message) {
 	var formattedTime = moment(message.createdAt).format('h:mm a')
@@ -80,12 +68,7 @@ socket.on('newLocationMessage', function(message) {
 		from: message.from,
 		url: message.url
 	});
-	// var li = $('<li></li>');
-	// var a = $('<a target="_blank"> My Current Location </a>');
-
-	// li.text(`${message.from} ${formattedTime}: `);
-	// a.attr('href', message.url);
-	// li.append(a);
+	
 	$('#messages').append(html);
 	scrollToBottom();
 });
