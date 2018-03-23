@@ -15,8 +15,6 @@ function scrollToBottom() {
 	if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
 		messages.scrollTop(scrollHeight);
 	}
-
-
 }
 
 socket.on('connect', function () {
@@ -68,7 +66,7 @@ socket.on('newLocationMessage', function(message) {
 		from: message.from,
 		url: message.url
 	});
-	
+
 	$('#messages').append(html);
 	scrollToBottom();
 });
